@@ -93,6 +93,46 @@ if (isset($_POST["import"])) {
             </form>
 
         </div>
+            <?php
+            $sqlSelect = "SELECT * FROM CovidCareCenter";
+            $result = $db->select($sqlSelect);
+            if (! empty($result)) {
+                ?>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Covid Care Center.." title="Type in a name">
+<a href="downloadCovidCareCenter.php">Download All records in CSV file</a>
+            <table id='userTable'>
+            <thead>
+                <tr>
+                    
+                    <th>Covid CARE Name</th>
+                    <th>Address </th>
+                    <th>Contact Number</th>
+                    <th>Doctor Incharge</th>
+                    
+                  
+                </tr>
+            </thead>
+<?php
+                
+                foreach ($result as $row) {
+                    ?>
+                    
+                <tbody>
+                <tr>
+				
+                    <td><?php  echo $row['cc_name']; ?></td>
+                    <td><?php  echo $row['cc_address']; ?></td>
+                    <td><?php  echo $row['contact_no']; ?></td>
+                    <td><?php  echo $row['doctor_incharge']; ?></td>
+                  
+                </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+        </table>
+        <?php } ?>
+    
          
     </div>
 
