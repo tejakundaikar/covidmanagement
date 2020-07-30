@@ -17,7 +17,7 @@ header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
 fputcsv($fp, $header);
 
-$query = "SELECT date_updated, male_occuped, female_occupied, emergency_occupied, male_likelyfree, female_likelyfree, emergency_likelyfree FROM HSBedOccupancy";
+$query = "SELECT date_updated, male_occupied, female_occupied, emergency_occupied, male_likelyfree, female_likelyfree, emergency_likelyfree FROM HSBedOccupancy";
 
 $result = mysqli_query($conn, $query);
 while($row = mysqli_fetch_row($result)) {
