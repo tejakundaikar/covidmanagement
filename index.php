@@ -26,6 +26,7 @@ include 'page_structure_content.php';
   <li><a href=covid_care_bed_data_upload.php> COVID Care Center Bed data Upload</a> </li>
   <li><a href=covid_hospital_data_upload.php>COVID Hospital data Upload</a> </li>
   <li><a href=covid_care_center_data_upload.php>COVID Care Center data Upload</a> </li>
+  <li><a href=downloadContactTracingReport.php>Downlod Report</a> </li>
   
 </div>
 
