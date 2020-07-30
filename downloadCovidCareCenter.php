@@ -5,7 +5,7 @@ require_once 'DataSource.php';
 $db = new DataSource();
 $conn = $db->getConnection();
 
-$filename = "toy_csv.csv";
+$filename = "CovidCareCenter.csv";
 $fp = fopen('php://output', 'w');
 
 $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='app' AND TABLE_NAME='CovidCareCenter'";
