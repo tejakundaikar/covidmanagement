@@ -1,6 +1,5 @@
 <?php
 use COVID\DataSource;
-echo "hi";
 
 require_once 'DataSource.php';
 $db = new DataSource();
