@@ -9,7 +9,7 @@ $filename = "COVID_HOSPITAL_BED_STATUS".date("Y-m-d").".csv";
 $fp = fopen('php://output', 'w');
 
 $arr = array("Sr.No", 
-"Name\n A",
+"Name",
 "Male", 
 "Female", 
 "Emergency",
