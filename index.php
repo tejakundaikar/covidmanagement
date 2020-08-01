@@ -19,26 +19,14 @@ include 'page_structure_content.php';
         </div>
 
         <div style="padding-left:16px">
-            <h2>Upload Master Tables</h2>
-            <ul>
-                <li><a href=paitent_data_upload.php>Upload Patient Data </a></li>
-                <li><a href=electricity_data_upload.php>Electricity data Upload</a> </li>
-                <li><a href=covid_care_bed_data_upload.php> COVID Care Center Bed data Upload</a> </li>
-                <li><a href=covid_hospital_data_upload.php>COVID Hospital data Upload</a> </li>
-                <li><a href=covid_care_center_data_upload.php>COVID Care Center data Upload</a> </li>
-            </ul>
-            <h2>Downlod Report</h2>
-            <ul>
-                <li><a href=downloadContactTracingReport.php>Downlod ContactTracing Report</a></li>
-                <li><a href=downloadCovidCenterBedStatusReport.php>Downlod COVID Center Bed Status Report</a></li>
-                <li><a href=downloadHospitalCenterBedStatusReport.php>Downlod COVID Hospital Bed Status Report</a></li>
-            </ul> 
-
-
+            <?php
+            echo $masterTabelupload;
+            echo $downloadReport;
+            ?>
         </div>
 
         <div class="footer">
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </div>
     </body>
 </html>
