@@ -26,7 +26,7 @@ foreach ($arr as &$value) {
 $arr2=array("Report","COVID HOSPITAL BED STATUS", "","");
 //$mydate=getdate(date("U"));
 //$todays=$mydate[month]." ".$mydate[mday]." ".$mydate[year];
-array_push($arr2,"Date: "date("Y-m-d"));
+array_push($arr2,"Date: ".date("Y-m-d"));
 foreach ($arr2 as &$value2) {
     $title[]= $value2;
 }
