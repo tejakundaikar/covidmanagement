@@ -4,8 +4,8 @@
 $header = "<h2>COVID Goa Data Analysis</h2>
   <h4>Visualisation and prediction</h4>";
 
-$navigation_bar = "<a class=\"active\" href=\"index.php\">Home</a>
-  <a href=\"uploadMasterTable.php\"> Upload Mater Tables </a>
+$navigation_bar = "<a class=\"active\"href=\"index.php\">Home</a>
+  <a href=\"uploadMasterTable.php\"> Upload Master Tables </a>
   <a href=\"downloadReports.php\">Report Downloads </a>";
 
 
