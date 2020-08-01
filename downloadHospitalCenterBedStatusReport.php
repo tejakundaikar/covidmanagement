@@ -18,10 +18,10 @@ $arr = array("Sr.No",
 "Female", 
 "Emergency",
 "Total",
-"MALE BED LIKELY FREE", 
-"FEMALE BED LIKELY FREE", 
-"EMERGENCY BED LIKELY FREE", 
-"DATE");
+"Male", 
+"Female", 
+"Emergency", 
+"Updated date");
 foreach ($arr as &$value) {
     $header[]= $value;
 }
