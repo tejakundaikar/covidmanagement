@@ -35,7 +35,8 @@ foreach ($arr2 as &$value2) {
 
 $blank=array("","");
 
-$commanheader=array("", "","[....","....","Capacity","....]","[.....",".....","Available",".....]","["," Likely free","....]");
+$commanheader=array("", "","[....",".......","Capacity","....]","[...",".......","Available","........]","[..."," Likely free","....]");
+$symbol=array("", "","A","B","C","[A+B+C]","D","E","F","[D+E+F]","G","H","I");
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
 
@@ -43,7 +44,7 @@ fputcsv($fp, $title);
 fputcsv($fp, $blank);
 fputcsv($fp, $commanheader);
 fputcsv($fp, $header);
-
+fputcsv($fp, $symbol);
 $query = "select h.ch_id, h.ch_name,  
 c.male_beds, c.female_beds, c.emergency_beds, c.male_beds+c.female_beds+c.emergency_beds as totalbed,
 c.male_beds-o.male_occupied as malebedavail, c.female_beds-o.female_occupied as femalebedsavail , c.emergency_beds-o.emergency_occupied as emergencybedavail, c.emergency_beds-o.emergency_occupied+ c.female_beds-o.female_occupied +  c.male_beds-o.male_occupied as totalbedavail,
