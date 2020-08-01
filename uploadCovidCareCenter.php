@@ -108,6 +108,8 @@ if (isset($_POST["import"])) {
                     <th>Address </th>
                     <th>Contact Number</th>
                     <th>Doctor Incharge</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                     
                   
                 </tr>
@@ -124,7 +126,8 @@ if (isset($_POST["import"])) {
                     <td><?php  echo $row['cc_address']; ?></td>
                     <td><?php  echo $row['contact_no']; ?></td>
                     <td><?php  echo $row['doctor_incharge']; ?></td>
-                  
+                    <td><input type="image" src="images/edit.png" name="edit_id"/></td>
+                    <td><input type="image" src="images/delete.png" name="delete_id"/></td>
                 </tr>
                     <?php
                 }
