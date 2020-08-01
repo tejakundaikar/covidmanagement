@@ -26,9 +26,9 @@ foreach ($arr as &$value) {
     $header[]= $value;
 }
 
-$arr2=array("HOSPITAL BED STATUS", "","");
+$arr2=array("","HOSPITAL BED STATUS", "","Date");
 
-array_push($arr2,"Date: ".date("Y-m-d"));
+array_push($arr2,date("Y-m-d"));
 foreach ($arr2 as &$value2) {
     $title[]= $value2;
 }
