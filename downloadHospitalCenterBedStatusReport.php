@@ -5,7 +5,7 @@ require_once 'DataSource.php';
 $db = new DataSource();
 $conn = $db->getConnection();
 
-$filename = "COVID_HOSPITAL_BED_STATUS.csv";
+$filename = "COVID_HOSPITAL_BED_STATUS".date("Y-m-d").".csv";
 $fp = fopen('php://output', 'w');
 
 $arr = array("SR.NO", 
