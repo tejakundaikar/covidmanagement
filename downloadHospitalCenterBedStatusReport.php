@@ -52,8 +52,8 @@ $query1 = "select sum(c.male_beds-o.male_occupied) as malebedavail, sum(c.female
 $arr3=array("","");
 $result = mysqli_query($conn, $query1);
 while($row1 = mysqli_fetch_row($result)) {
-	$row1=array_merge($arr3.$row1);
-	fputcsv($fp, $row1);
+	array_merge($arr3.$row1);
+	fputcsv($fp, $arr3);
 }
 exit;
 ?>
