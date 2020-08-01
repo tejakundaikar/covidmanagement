@@ -30,12 +30,12 @@ foreach ($arr2 as &$value2) {
     $title[]= $value2;
 }
 
-
+$blank=array("","");
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
 
 fputcsv($fp, $title);
-
+fputcsv($fp, $blank);
 fputcsv($fp, $header);
 
 $query = "select h.ch_id, h.ch_name,  
