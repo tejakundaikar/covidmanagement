@@ -93,6 +93,27 @@ if (isset($_POST["import"])) {
             </form>
 
         </div>
+        <div>
+            <table id='userInsertTable'>
+                <tr>
+                    <td>Covid CARE Name: </td>
+                    <td>Address </td>
+                    <td>Contact Number: </td>
+                    <td>Doctor Incharge: </td>
+                    <td> </td>
+                    
+                </tr>
+                <tr>
+                    <td><input type="text" name="Covid_CARE_Name" value="<?php echo'COVID Care Name';?>"></td>
+                    <td><input type="text" name="Addres" value="<?php echo'Adress';?>"></td>
+                    <td> <input type="text" name="Contact_Number" value="<?php echo'Phone Number';?>"></td>
+                    <td> <input type="text" name="Doctor_incharge" value="<?php echo'Doctor Incharge';?>"></td>
+                    <td> <button type="submit" id="submit" name="insert"
+                        class="btn-submit">Insert</button></td>
+                </tr>
+            </table>   
+        </div>
+        
             <?php
             $sqlSelect = "SELECT * FROM CovidCareCenter";
             $result = $db->select($sqlSelect);
