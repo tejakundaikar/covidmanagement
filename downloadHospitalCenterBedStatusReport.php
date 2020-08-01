@@ -10,7 +10,10 @@ $fp = fopen('php://output', 'w');
 
 $arr = array("SR.NO", 
 "NAME",
-
+"MALE BED ", 
+"FEMALE BED", 
+"EMERGENCY BED ",
+"TOTAL BED AVAILABLE",
 "MALE BED AVAILABLE", 
 "FEMALE BEDAVAILABLE", 
 "EMERGENCY BED AVAILABLE",
@@ -39,6 +42,7 @@ fputcsv($fp, $blank);
 fputcsv($fp, $header);
 
 $query = "select h.ch_id, h.ch_name,  
+c.male_beds, c.female_beds, c.emergency_beds+ c.male_beds+c.female_beds+c.emergency_beds as totalbed
 c.male_beds-o.male_occupied as malebedavail, c.female_beds-o.female_occupied as femalebedsavail , c.emergency_beds-o.emergency_occupied as emergencybedavail, c.emergency_beds-o.emergency_occupied+ c.female_beds-o.female_occupied +  c.male_beds-o.male_occupied as totalbedavail,
 o.male_likelyfree, o.female_likelyfree, o.emergency_likelyfree, 
  o.date_updated from CovidHospital h, HSBedCapacity c, HSBedOccupancy o where h.ch_id=c.ch_id and c.ch_id=o.ch_id";
@@ -49,7 +53,7 @@ while($row = mysqli_fetch_row($result)) {
 }
 $query1 = "select sum(c.male_beds-o.male_occupied) as malebedavail, sum(c.female_beds-o.female_occupied) as femalebedsavail , sum(c.emergency_beds-o.emergency_occupied) as emergencybedavail, sum(c.emergency_beds-o.emergency_occupied+ c.female_beds-o.female_occupied +  c.male_beds-o.male_occupied) as totalbedavail from CovidHospital h, HSBedCapacity c, HSBedOccupancy o where h.ch_id=c.ch_id and c.ch_id=o.ch_id";
 
-$arr3=array("","");
+$arr3=array("","","","","");
 $result = mysqli_query($conn, $query1);
 while($row1 = mysqli_fetch_row($result)) {
 	array_unshift($row1,"","Total: ");
