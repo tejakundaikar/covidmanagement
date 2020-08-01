@@ -24,8 +24,7 @@ foreach ($arr as &$value) {
 }
 
 $arr2=array("Report","COVID HOSPITAL BED STATUS", "","");
-//$mydate=getdate(date("U"));
-//$todays=$mydate[month]." ".$mydate[mday]." ".$mydate[year];
+
 array_push($arr2,"Date: ".date("Y-m-d"));
 foreach ($arr2 as &$value2) {
     $title[]= $value2;
@@ -50,10 +49,10 @@ while($row = mysqli_fetch_row($result)) {
 }
 $query1 = "select sum(c.male_beds-o.male_occupied) as malebedavail, sum(c.female_beds-o.female_occupied) as femalebedsavail , sum(c.emergency_beds-o.emergency_occupied) as emergencybedavail, sum(c.emergency_beds-o.emergency_occupied+ c.female_beds-o.female_occupied +  c.male_beds-o.male_occupied) as totalbedavail from CovidHospital h, HSBedCapacity c, HSBedOccupancy o where h.ch_id=c.ch_id and c.ch_id=o.ch_id";
 
-
+$arr3=array("","");
 $result = mysqli_query($conn, $query1);
 while($row1 = mysqli_fetch_row($result)) {
-
+	$row1=array_merge($arr3.$row1);
 	fputcsv($fp, $row1);
 }
 exit;
