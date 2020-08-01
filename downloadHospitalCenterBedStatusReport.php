@@ -24,13 +24,14 @@ foreach ($arr as &$value) {
 }
 
 $arr2=array("Report","COVID HOSPITAL BED STATUS", "","","DATE:");
+//$mydate=getdate(date("U"));
+//$todays=$mydate[month]." ".$mydate[mday]." ".$mydate[year];
+array_push($arr2,"d...");
 foreach ($arr2 as &$value2) {
     $title[]= $value2;
 }
 
-//$mydate=getdate(date("U"));
-//$todays=$mydate[month]." ".$mydate[mday]." ".$mydate[year];
-array_push($arr2,"d...");
+
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
 
