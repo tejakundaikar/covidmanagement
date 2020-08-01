@@ -35,7 +35,7 @@ foreach ($arr2 as &$value2) {
 
 $blank=array("","");
 
-$commanheader=array("", "","[....",".......","Capacity","....]","[...",".......","Available","........]","[..."," Likely free","....]");
+$commanheader=array("", "","[......",".........","Capacity",".............]","[......",".........","Available...","............]","[......"," Likely free","....]");
 $symbol=array("", "","A","B","C","[A+B+C]","D","E","F","[D+E+F]","G","H","I");
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
@@ -57,7 +57,7 @@ while($row = mysqli_fetch_row($result)) {
 }
 $query1 = "select sum(c.male_beds), sum(c.female_beds), sum(c.emergency_beds), sum(c.male_beds+c.female_beds+c.emergency_beds), sum(c.male_beds-o.male_occupied) as malebedavail, sum(c.female_beds-o.female_occupied) as femalebedsavail , sum(c.emergency_beds-o.emergency_occupied) as emergencybedavail, sum(c.emergency_beds-o.emergency_occupied+ c.female_beds-o.female_occupied +  c.male_beds-o.male_occupied) as totalbedavail from CovidHospital h, HSBedCapacity c, HSBedOccupancy o where h.ch_id=c.ch_id and c.ch_id=o.ch_id";
 
-
+fputcsv($fp, $blank);
 $result = mysqli_query($conn, $query1);
 while($row1 = mysqli_fetch_row($result)) {
 	array_unshift($row1,"","Total: ");
