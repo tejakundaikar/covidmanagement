@@ -12,11 +12,11 @@ include 'page_structure_content.php';
 <body>
 
 <div class="header">
-<? echo $header; ?>
+<?php echo $header; ?>
 </div>
 
 <div class="topnav">
-<? echo $navigation_bar; ?>
+<?php echo $navigation_bar; ?>
 </div>
 
 <div style="padding-left:16px">
