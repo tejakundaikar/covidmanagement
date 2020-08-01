@@ -8,16 +8,16 @@ $conn = $db->getConnection();
 $filename = "COVID_HOSPITAL_BED_STATUS".date("Y-m-d").".csv";
 $fp = fopen('php://output', 'w');
 
-$arr = array("SR.NO", 
-"NAME\n A",
-"MALE", 
-"FEMALE", 
-"EMERGENCY",
-"TOTAL",
-"MALE", 
-"FEMALE", 
-"EMERGENCY",
-"TOTAL ",
+$arr = array("Sr.No", 
+"Name\n A",
+"Male", 
+"Female", 
+"Emergency",
+"Total",
+"Male", 
+"Female", 
+"Emergency",
+"Total",
 "MALE BED LIKELY FREE", 
 "FEMALE BED LIKELY FREE", 
 "EMERGENCY BED LIKELY FREE", 
@@ -26,7 +26,7 @@ foreach ($arr as &$value) {
     $header[]= $value;
 }
 
-$arr2=array("Report","COVID HOSPITAL BED STATUS", "","");
+$arr2=array("HOSPITAL BED STATUS", "","");
 
 array_push($arr2,"Date: ".date("Y-m-d"));
 foreach ($arr2 as &$value2) {
@@ -34,11 +34,14 @@ foreach ($arr2 as &$value2) {
 }
 
 $blank=array("","");
+
+$commanheader=array("", "","[","","Capacity","]","[","","Available","]","["," LIKELY FREE","]");
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
 
 fputcsv($fp, $title);
 fputcsv($fp, $blank);
+fputcsv($fp, $commanheader);
 fputcsv($fp, $header);
 
 $query = "select h.ch_id, h.ch_name,  
