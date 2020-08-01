@@ -35,7 +35,7 @@ foreach ($arr2 as &$value2) {
 
 $blank=array("","");
 
-$commanheader=array("", "","[......",".........","Capacity",".........]","[......",".........","Available","........]","[..."," Likely free","....]");
+$commanheader=array("", "","[......",".........","Capacity",".........]","[......",".........","Available...","........]","[..."," Likely free","....]");
 $symbol=array("", "","A","B","C","[A+B+C]","D","E","F","[D+E+F]","G","H","I");
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
