@@ -50,7 +50,7 @@ $query = "select 'District:', district, 'Village:', village, 'ICMR ID:', icmr_id
 
 $result = mysqli_query($conn, $query);
 while($row = mysqli_fetch_row($result)) {
-	fputcsv($fp, $row);
+	/*fputcsv($fp, $row);
 	fputcsv($fp, $header);
 	$query1 = "select c.name, c.contact_number, c.relation, c.age, c.place, c.symptomatic, c.remarks from CloseContact c where c.icmr_id=".$row['icmr_id'];
 
@@ -58,7 +58,7 @@ while($row = mysqli_fetch_row($result)) {
 	while($row1 = mysqli_fetch_row($result1)) {
 		fputcsv($fp, $row1);
 
-	}
+	}*/
 
 }
 
