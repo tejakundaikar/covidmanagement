@@ -31,9 +31,6 @@ foreach ($arr2 as &$value2) {
 $blank=array("","");
 
 
-
-
-
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename='.$filename);
 
