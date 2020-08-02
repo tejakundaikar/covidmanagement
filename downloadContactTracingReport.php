@@ -47,6 +47,7 @@ $query = "select 'District:', district, 'Village:', village, 'ICMR ID:', icmr_id
 $result = mysqli_query($conn, $query);
 while($row = mysqli_fetch_row($result)) {
 	fputcsv($fp, $row);
+	fputcsv($fp, $blank);
 	fputcsv($fp, $header);
 	$query1 = "select c.name, c.contact_number, c.relation, c.age, c.place, c.symptomatic, c.remarks from CloseContact c where c.icmr_id='".$row[5]."'";
 
