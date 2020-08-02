@@ -1,12 +1,17 @@
 
 <?php
 
+//$home_page="active";
+//$upload_master_table_page="inactive";
+//$download_report_page="inactive";
+
+
 $header = "<h2>COVID Goa Data Analysis</h2>
   <h4>Visualisation and prediction</h4>";
 
-$navigation_bar = "<a class=\"active\"href=\"index.php\">Home</a>
-  <a href=\"uploadMasterTable.php\"> Upload Master Tables </a>
-  <a href=\"downloadReports.php\">Report Downloads </a>";
+$navigation_bar = "<a class=\"".$home_page."\"href=\"index.php\">Home</a>
+  <a class=\"".$upload_master_table_page."\"href=\"uploadMasterTable.php\"> Upload Master Tables </a>
+  <a class=\"".$download_report_page."\"href=\"downloadReports.php\">Report Downloads </a>";
 
 
 $masterTabelupload = "<h2>Upload Master Tables</h2>

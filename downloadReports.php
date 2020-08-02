@@ -1,4 +1,5 @@
 <?php
+
 include 'page_structure_content.php';
 
 ?>

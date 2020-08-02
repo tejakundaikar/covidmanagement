@@ -1,4 +1,5 @@
 <?php
+
 use COVID\DataSource;
 
 require_once 'DataSource.php';

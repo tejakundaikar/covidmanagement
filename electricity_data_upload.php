@@ -1,4 +1,9 @@
 <?php
+//used for CSS puspose to color active page.
+$home_page="inactive";
+$upload_master_table_page="active";
+$download_report_page="inactive";
+
 include 'page_structure_content.php';
 
 ?>
