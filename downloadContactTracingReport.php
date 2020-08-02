@@ -6,7 +6,7 @@ require_once 'DataSource.php';
 $db = new DataSource();
 $conn = $db->getConnection();
 
-$filename = "COVID_CENTER_BED_STATUS".date("Y-m-d").".csv";
+$filename = "Contract Tracing".date("Y-m-d").".csv";
 $fp = fopen('php://output', 'w');
 
 $arr = array("Name",
@@ -21,7 +21,7 @@ foreach ($arr as &$value) {
     $header[]= $value;
 }
 
-$arr2=array("","Contact Tracing details", "","Date");
+$arr2=array("Contact Tracing details", "","Date");
 
 array_push($arr2,date("Y-m-d"));
 foreach ($arr2 as &$value2) {
