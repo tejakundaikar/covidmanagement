@@ -1,8 +1,4 @@
-<!--SELECT person_id, icmr_id, name, contact_number, age, place, symptomatic FROM CloseContact
-select * from PositivePatient p, CloseContact c where p.icmr_id=c.icmr_id group by p.icmr_id
 
-select c.name, c.contact_number, c.relation, c.age, c.place, c.symptomatic, c.remarks, p.icmr_id, p.patient_name, p.village, p.district from PositivePatient p, CloseContact c where p.icmr_id=c.icmr_id order by p.district, p.village, p.icmr_id
--->
 <?php
 use COVID\DataSource;
 
