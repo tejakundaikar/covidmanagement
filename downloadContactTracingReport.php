@@ -56,6 +56,7 @@ while($row = mysqli_fetch_row($result)) {
 		fputcsv($fp, $row1);
 
 	}
+fputcsv($fp, $blank);
 
 }
 
