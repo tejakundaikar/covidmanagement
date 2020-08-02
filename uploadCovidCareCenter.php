@@ -113,19 +113,26 @@ if (isset($_POST["import"])) {
 
                     </tr>
                     <tr>
+                    <!-- form inser/upload code
+                    // refrence http://www.shotdev.com/php/php-mysql/php-mysql-add-insert-edit-delete-on-same-form/
+                    -->
+                    <form class=" " action="" method="post"
+                          name="" id="insert_or_update"
+                          enctype="multipart/form-data">
                         <td><input type="text" name="Covid_CARE_Name" value="<?php echo'COVID Care Name'; ?>"></td>
                         <td><input type="text" name="Addres" value="<?php echo'Adress'; ?>"></td>
                         <td> <input type="text" name="Contact_Number" value="<?php echo'Phone Number'; ?>"></td>
                         <td> <input type="text" name="Doctor_incharge" value="<?php echo'Doctor Incharge'; ?>"></td>
                         <td> <button type="submit" id="submit" name="insert"
                                      class="btn-submit">Insert</button></td>
+                    </form>
                     </tr>
                 </table>   
             </div>
 
             <div>
                 <h3>Search/Edit/Delete Record </h3>
-             
+
                 <?php
                 $sqlSelect = "SELECT * FROM CovidCareCenter";
                 $result = $db->select($sqlSelect);
