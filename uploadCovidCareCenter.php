@@ -124,6 +124,8 @@ if (isset($_POST["import"])) {
             </div>
 
             <div>
+                <h3>Search/Edit/Delete Record </h3>
+             
                 <?php
                 $sqlSelect = "SELECT * FROM CovidCareCenter";
                 $result = $db->select($sqlSelect);
