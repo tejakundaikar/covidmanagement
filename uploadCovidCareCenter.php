@@ -98,7 +98,7 @@ if (isset($_GET['del'])){
 
 }
 
-echo $_POST["delete_id"];
+//echo $_POST["delete_id"];
 ?>
 <!DOCTYPE html>
 <html>
