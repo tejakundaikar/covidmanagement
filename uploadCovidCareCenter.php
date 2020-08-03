@@ -86,12 +86,13 @@ else if (isset($_POST["insert"])) {
         $message = "Problem in Insertion";
     }
 }
-else if (isset($_POST["delete"])){
 
-	$id = $_POST['del'];
-	mysqli_query($db, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
+if (isset($_GET['del'])){
+
+	$id = $_GET['del'];
+	mysqli_query($conn, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
 	$_SESSION['message'] = "CovidCareCenter deleted!"; 
-	header('location: index.php');
+	header('location: covid_care_center_data_upload.php');
 
 }
 ?>
@@ -205,8 +206,8 @@ else if (isset($_POST["delete"])){
                                     <td><?php echo $row['cc_address']; ?></td>
                                     <td><?php echo $row['contact_no']; ?></td>
                                     <td><?php echo $row['doctor_incharge']; ?></td>
-                                    <td><input type="image" src="images/edit.png" name="edit_id"/></td>
-                                    <td><input type="image" src="images/delete.png" name="delete_id"/></td>
+                                    <td><a href="uploadCovidCareCenter.php?edit=<?php echo $row['cc_id']; ?>" ><img src="images/edit.png"></a><!--<input type="image" src="images/edit.png" name="edit_id"/>--></td>
+                                    <td><a href="uploadCovidCareCenter.php?del=<?php echo $row['cc_id']; ?>" ><img src="images/delete.png"></a><!--<input type="image" src="images/delete.png" name="delete_id"/>--></td>
                                 </tr>
                                 <?php
                             }
