@@ -86,14 +86,17 @@ else if (isset($_POST["insert"])) {
         $message = "Problem in Insertion";
     }
 }
-else if (isset($_POST["delete"])){
+else if (isset($_POST["delete_id"])){
+    
 
-	$id = $_POST['del'];
+	$id = $_POST['delete_id'];
 	mysqli_query($db, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
 	$_SESSION['message'] = "CovidCareCenter deleted!"; 
 	header('location: index.php');
 
 }
+
+echo $_POST["delete_id"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -205,9 +208,8 @@ else if (isset($_POST["delete"])){
                                     <td><?php echo $row['cc_address']; ?></td>
                                     <td><?php echo $row['contact_no']; ?></td>
                                     <td><?php echo $row['doctor_incharge']; ?></td>
-                                    <td><input type="image" src="images/edit.png" name="edit_id" value="<?php echo $row['cc_id']; ?>"/></td>
-                                    <td><input type="image" src="images/delete.png" name="delete_id"  value="<?php echo $row['cc_id']; ?>"/></td>
-                                </tr>
+                                    
+                                    </tr>
                                 <?php
                             }
                             ?>
