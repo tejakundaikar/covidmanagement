@@ -206,9 +206,10 @@ if (isset($_GET['del'])){
                                     <td><?php echo $row['cc_address']; ?></td>
                                     <td><?php echo $row['contact_no']; ?></td>
                                     <td><?php echo $row['doctor_incharge']; ?></td>
+
                                     <td><a href="uploadCovidCareCenter.php?edit=<?php echo $row['cc_id']; ?>" ><img src="images/edit.png"></a><!--<input type="image" src="images/edit.png" name="edit_id"/>--></td>
                                     <td><a href="uploadCovidCareCenter.php?del=<?php echo $row['cc_id']; ?>" ><img src="images/delete.png"></a><!--<input type="image" src="images/delete.png" name="delete_id"/>--></td>
-                                </tr>
+
                                 <?php
                             }
                             ?>
