@@ -55,6 +55,37 @@ if (isset($_POST["import"])) {
         }
     }
 }
+//code for manual insert in database
+else if (isset($_POST["insert"])) {
+    $cc_name = $_POST["Covid_CARE_Name"];
+    $cc_address = $_POST['Addres'];
+    $contact_no = $_POST['Contact_Number'];
+    $doctor_incharge = $_POST['Doctor_incharge'];
+
+    $sqlInsert_maual = "INSERT into 
+                            CovidCareCenter 
+                             (
+                                cc_name,
+                                cc_address,
+                                contact_no,
+                                doctor_incharge
+                             )
+                            values 
+                             (
+                               '" . $cc_name . "', '" 
+                                 . $cc_address . "', '" 
+                                 . $contact_no . "', '" 
+                                 . $doctor_incharge .
+                               "' )";
+    $insertId = mysqli_query($conn,$sqlInsert_maual);
+    if ($insertId) {
+        $type = "success";
+        $message = " Insertion sucessful";
+    } else {
+        $type = "error";
+        $message = "Problem in Insertion";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,8 +123,8 @@ if (isset($_POST["import"])) {
                         <label class="col-md-4 control-label">Choose CSV
                             File</label> <input type="file" name="file"
                                             id="file" accept=".csv">
-                        <button type="submit" id="submit" name="import"
-                                class="btn-submit">Import</button>
+                        <button type="submit" id="insert" name="insert"
+                                ">Import</button>
                         <br />
 
                     </div>
@@ -113,9 +144,10 @@ if (isset($_POST["import"])) {
 
                     </tr>
                     <tr>
-                    <!-- form inser/upload code
-                    // refrence http://www.shotdev.com/php/php-mysql/php-mysql-add-insert-edit-delete-on-same-form/
-                    -->
+                        <!-- form inser/upload code
+                        // refrence1: http://www.shotdev.com/php/php-mysql/php-mysql-add-insert-edit-delete-on-same-form/
+                        // refrence 2: https://gist.github.com/sashaca2/3785796
+                        -->
                     <form class=" " action="" method="post"
                           name="" id="insert_or_update"
                           enctype="multipart/form-data">
