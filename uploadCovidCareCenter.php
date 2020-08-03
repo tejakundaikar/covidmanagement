@@ -86,19 +86,13 @@ $type = "error";
 $message = "Problem in Insertion";
 }
 }
-<<<<<<< HEAD
-else if (isset($_POST["delete_id"])){
-    
 
-	$id = $_POST['delete_id'];
-	mysqli_query($db, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
-=======
 
 if (isset($_GET['del'])){
 
 	$id = $_GET['del'];
 	mysqli_query($conn, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
->>>>>>> 4e84866787fd763e37a4e89e5210e5bd8a8436df
+
 	$_SESSION['message'] = "CovidCareCenter deleted!"; 
 	header('location: covid_care_center_data_upload.php');
 
