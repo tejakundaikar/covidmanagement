@@ -8,61 +8,61 @@ $conn = $db->getConnection();
 
 if (isset($_POST["import"])) {
 
-    $fileName = $_FILES["file"]["tmp_name"];
+$fileName = $_FILES["file"]["tmp_name"];
 
-    if ($_FILES["file"]["size"] > 0) {
+if ($_FILES["file"]["size"] > 0) {
 
-        $file = fopen($fileName, "r");
+$file = fopen($fileName, "r");
 
-        while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
 
-            $cc_name = "";
-            if (isset($column[0])) {
-                $cc_name = mysqli_real_escape_string($conn, $column[0]);
-            }
-            $cc_address = "";
-            if (isset($column[1])) {
-                $cc_address = mysqli_real_escape_string($conn, $column[1]);
-            }
-            $contact_no = "";
-            if (isset($column[2])) {
-                $contact_no = mysqli_real_escape_string($conn, $column[2]);
-            }
-            $doctor_incharge = "";
-            if (isset($column[3])) {
-                $doctor_incharge = mysqli_real_escape_string($conn, $column[3]);
-            }
+$cc_name = "";
+if (isset($column[0])) {
+$cc_name = mysqli_real_escape_string($conn, $column[0]);
+}
+$cc_address = "";
+if (isset($column[1])) {
+$cc_address = mysqli_real_escape_string($conn, $column[1]);
+}
+$contact_no = "";
+if (isset($column[2])) {
+$contact_no = mysqli_real_escape_string($conn, $column[2]);
+}
+$doctor_incharge = "";
+if (isset($column[3])) {
+$doctor_incharge = mysqli_real_escape_string($conn, $column[3]);
+}
 
 
-            $sqlInsert = "INSERT into CovidCareCenter (cc_name,cc_address,contact_no,doctor_incharge)
+$sqlInsert = "INSERT into CovidCareCenter (cc_name,cc_address,contact_no,doctor_incharge)
                    values (?,?,?,?)";
-            $paramType = "ssss";
-            $paramArray = array(
-                $cc_name,
-                $cc_address,
-                $contact_no,
-                $doctor_incharge
-            );
-            $insertId = $db->insert($sqlInsert, $paramType, $paramArray);
+$paramType = "ssss";
+$paramArray = array(
+$cc_name,
+ $cc_address,
+ $contact_no,
+ $doctor_incharge
+);
+$insertId = $db->insert($sqlInsert, $paramType, $paramArray);
 
-            if ($insertId) {
-                $type = "success";
-                $message = " Data Imported into the Database";
-            } else {
-                $type = "error";
-                $message = "Problem in Importing CSV Data";
-            }
-        }
-    }
+if ($insertId) {
+$type = "success";
+$message = " Data Imported into the Database";
+} else {
+$type = "error";
+$message = "Problem in Importing CSV Data";
+}
+}
+}
 }
 //code for manual insert in database
 else if (isset($_POST["insert"])) {
-    $cc_name = $_POST["Covid_CARE_Name"];
-    $cc_address = $_POST['Addres'];
-    $contact_no = $_POST['Contact_Number'];
-    $doctor_incharge = $_POST['Doctor_incharge'];
+$cc_name = $_POST["Covid_CARE_Name"];
+$cc_address = $_POST['Addres'];
+$contact_no = $_POST['Contact_Number'];
+$doctor_incharge = $_POST['Doctor_incharge'];
 
-    $sqlInsert_maual = "INSERT into 
+$sqlInsert_maual = "INSERT into 
                             CovidCareCenter 
                              (
                                 cc_name,
@@ -72,27 +72,35 @@ else if (isset($_POST["insert"])) {
                              )
                             values 
                              (
-                               '" . $cc_name . "', '" 
-                                 . $cc_address . "', '" 
-                                 . $contact_no . "', '" 
-                                 . $doctor_incharge .
-                               "' )";
-    $insertId = mysqli_query($conn,$sqlInsert_maual);
-    if ($insertId) {
-        $type = "success";
-        $message = " Insertion sucessful";
-    } else {
-        $type = "error";
-        $message = "Problem in Insertion";
-    }
+                               '" . $cc_name . "', '"
+. $cc_address . "', '"
+. $contact_no . "', '"
+. $doctor_incharge .
+"' )";
+$insertId = mysqli_query($conn, $sqlInsert_maual);
+if ($insertId) {
+$type = "success";
+$message = " Insertion sucessful";
+} else {
+$type = "error";
+$message = "Problem in Insertion";
 }
+}
+<<<<<<< HEAD
 else if (isset($_POST["delete_id"])){
     
 
 	$id = $_POST['delete_id'];
 	mysqli_query($db, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
+=======
+
+if (isset($_GET['del'])){
+
+	$id = $_GET['del'];
+	mysqli_query($conn, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
+>>>>>>> 4e84866787fd763e37a4e89e5210e5bd8a8436df
 	$_SESSION['message'] = "CovidCareCenter deleted!"; 
-	header('location: index.php');
+	header('location: covid_care_center_data_upload.php');
 
 }
 
@@ -208,8 +216,15 @@ echo $_POST["delete_id"];
                                     <td><?php echo $row['cc_address']; ?></td>
                                     <td><?php echo $row['contact_no']; ?></td>
                                     <td><?php echo $row['doctor_incharge']; ?></td>
+
                                     
-                                    </tr>
+                                    
+
+
+                                    <td><a href="uploadCovidCareCenter.php?edit=<?php echo $row['cc_id']; ?>" ><img src="images/edit.png"></a><!--<input type="image" src="images/edit.png" name="edit_id"/>--></td>
+                                    <td><a href="uploadCovidCareCenter.php?del=<?php echo $row['cc_id']; ?>" ><img src="images/delete.png"></a><!--<input type="image" src="images/delete.png" name="delete_id"/>--></td>
+</tr>
+
                                 <?php
                             }
                             ?>
