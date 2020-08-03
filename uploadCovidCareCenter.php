@@ -86,6 +86,14 @@ else if (isset($_POST["insert"])) {
         $message = "Problem in Insertion";
     }
 }
+else if (isset($_POST["delete"])){
+
+	$id = $_POST['del'];
+	mysqli_query($db, "DELETE FROM CovidCareCenter WHERE cc_id=$id");
+	$_SESSION['message'] = "CovidCareCenter deleted!"; 
+	header('location: index.php');
+
+}
 ?>
 <!DOCTYPE html>
 <html>
