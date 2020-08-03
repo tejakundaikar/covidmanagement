@@ -197,8 +197,8 @@ else if (isset($_POST["insert"])) {
                                     <td><?php echo $row['cc_address']; ?></td>
                                     <td><?php echo $row['contact_no']; ?></td>
                                     <td><?php echo $row['doctor_incharge']; ?></td>
-                                    <td><input type="image" src="images/edit.png" name="edit_id"/></td>
-                                    <td><input type="image" src="images/delete.png" name="delete_id"/></td>
+                                    <td><input type="image" src="images/edit.png" name="edit_id" value="<?php echo $row['cc_id']; ?>"/></td>
+                                    <td><input type="image" src="images/delete.png" name="delete_id"  value="<?php echo $row['cc_id']; ?>"/></td>
                                 </tr>
                                 <?php
                             }
