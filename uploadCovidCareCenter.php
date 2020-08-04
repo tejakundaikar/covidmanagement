@@ -8,7 +8,8 @@ $conn = $db->getConnection();
 
 //Defaut values for insert form  and edit values for edit form
 $Insert_edit_selector = "insert"; //default value is insert
-$Covid_CARE_Name = "Covid Care Name";
+$COVID_care_id = "";
+$Covid_Care_Name = "Covid Care Name";
 $Addres = "Address";
 $Contact_Number = "Contact Number";
 $Doctor_incharg = "Doctor incharge";
@@ -62,14 +63,16 @@ if (isset($_POST["import"])) {
         }
     }
 }
-//code for manual insert in database
-else if (isset($_GET["insert"])) {
+//code for manual insert and udate in database
+else if (isset($_POST["insert"])) {
+    $COVID_care_id = $_POST["cc_id"];
     $cc_name = $_POST["Covid_CARE_Name"];
     $cc_address = $_POST['Addres'];
     $contact_no = $_POST['Contact_Number'];
     $doctor_incharge = $_POST['Doctor_incharge'];
-
-    $sqlInsert_maual = "INSERT into 
+//code for inserting new entries
+    if ($COVID_care_id == "") {
+        $sqlInsert_maual = "INSERT into 
                             CovidCareCenter 
                              (
                                 cc_name,
@@ -80,17 +83,37 @@ else if (isset($_GET["insert"])) {
                             values 
                              (
                                '" . $cc_name . "', '"
-            . $cc_address . "', '"
-            . $contact_no . "', '"
-            . $doctor_incharge .
-            "' )";
-    $insertId = mysqli_query($conn, $sqlInsert_maual);
-    if ($insertId) {
-        $type = "success";
-        $message = " Insertion sucessful";
-    } else {
-        $type = "error";
-        $message = "Problem in Insertion";
+                . $cc_address . "', '"
+                . $contact_no . "', '"
+                . $doctor_incharge .
+                "' )";
+        $insertId = mysqli_query($conn, $sqlInsert_maual);
+        if ($insertId) {
+            $type = "success";
+            $message = " Insertion sucessful";
+        } else {
+            $type = "error";
+            $message = "Problem in Insertion";
+        }
+    }
+    //code for udating table entries
+    else {
+        $sql_update = "UPDATE CovidCareCenter 
+                   SET
+                      cc_name= '" . $cc_name . "',
+                      cc_address= '" . $cc_address . "',
+                      contact_no= '" . $contact_no . "',
+                      doctor_incharge= '" . $doctor_incharge . "'
+                   WHERE cc_id = " . $COVID_care_id;
+        //echo $sql_update;
+        $insertId = mysqli_query($conn, $sql_update);
+        if ($insertId) {
+            $type = "success";
+            $message = " Update sucessful";
+        } else {
+            $type = "error";
+            $message = "Problem in Update";
+        }
     }
 } elseif (isset($_GET["edit"])) {
 
@@ -98,12 +121,13 @@ else if (isset($_GET["insert"])) {
     $result = $db->select($sqlSelect);
 
     foreach ($result as $row) {
-    $Covid_CARE_Name =$row['cc_name'];
-    $Addres =$row['cc_address'];
-    $Contact_Number =$row['contact_no'];
-    $Doctor_incharg =$row['doctor_incharge'];
+        $COVID_care_id = $row['cc_id'];
+        $Covid_Care_Name = $row['cc_name'];
+        $Addres = $row['cc_address'];
+        $Contact_Number = $row['contact_no'];
+        $Doctor_incharg = $row['doctor_incharge'];
     }
-    
+
     $Insert_edit_selector = "Update";
 }
 
@@ -182,11 +206,12 @@ if (isset($_GET['del'])) {
                     <form class=" " action="" method="post"
                           name="" id="insert_or_update"
                           enctype="multipart/form-data">
-                        <td><input type="text" name="Covid_CARE_Name" value="<?php echo $Covid_CARE_Name; ?>"></td>
+                        <input  name="cc_id" type="hidden" value="<?php echo $COVID_care_id; ?>">
+                        <td><input type="text" name="Covid_CARE_Name" value="<?php echo $Covid_Care_Name; ?>"></td>
                         <td><input type="text" name="Addres" value="<?php echo $Addres; ?>"></td>
                         <td> <input type="text" name="Contact_Number" value="<?php echo $Contact_Number; ?>"></td>
                         <td> <input type="text" name="Doctor_incharge" value="<?php echo$Doctor_incharg; ?>"></td>
-                        <td> <button type="submit" id="submit" name="<?php echo $Insert_edit_selector; ?>"
+                        <td> <button type="submit" id="submit" name="insert"
                                      class="btn-submit"><?php echo $Insert_edit_selector; ?></button></td>
                     </form>
                     </tr>
